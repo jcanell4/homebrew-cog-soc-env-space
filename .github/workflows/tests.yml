@@ -1,0 +1,17 @@
+name: test-bot (PR)
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-bot:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Run brew test-bot (syntax + build + test)
+        run: brew test-bot --only-formulae --tap="$GITHUB_REPOSITORY"
