@@ -1,16 +1,17 @@
 class CogSocEnvSpace < Formula
   desc "Cognitive-social environment space simulator"
   homepage "https://github.com/jcanell4/cog_soc_env_space"
-  url "https://github.com/jcanell4/cog_soc_env_space/archive/refs/tags/v0.0.3.tar.gz"
-  version "0.0.3"
-  sha256 "2260289f0e74a2387ab120591fabe0e624652daee3e01376ee7e12937d611cc7"
+  url "https://github.com/jcanell4/cog_soc_env_space/archive/refs/tags/v0.0.4.tar.gz"
+  version "0.0.4"
+  sha256 "63b9cfd6599a11ecdf87af6f4ca2ce039bbfdef70b48ce25c439dec8a878668b"
   license "MIT"
 
   depends_on "cmake" => :build
 
+  depends_on "raylib"
   depends_on "nlohmann-json"
   def install
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args, "-DENABLE_RAYLIB_VIEWER=ON"
     system "cmake", "--build", "build"
 
     bin.install "build/cog_soc_env_space"
