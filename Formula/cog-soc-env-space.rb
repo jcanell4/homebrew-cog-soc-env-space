@@ -7,9 +7,9 @@ class CogSocEnvSpace < Formula
   license "MIT"
 
   depends_on "cmake" => :build
-
-  depends_on "raylib"
   depends_on "nlohmann-json"
+  depends_on "raylib"
+
   def install
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, "-DENABLE_RAYLIB_VIEWER=ON"
     system "cmake", "--build", "build"
@@ -34,6 +34,6 @@ class CogSocEnvSpace < Formula
 
     system bin/"cog_soc_env_space", "--config", testpath/"sim.json",
            "--environment", "#{pkgshare}/niche.example.000.json"
-    assert_predicate (testpath/"output/simulation.json"), :exist?
+    assert_predicate testpath/"output/simulation.json", :exist?
   end
 end

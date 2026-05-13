@@ -1,3 +1,9 @@
+# Runs Homebrew's test-bot for this tap: tap syntax, formula style/audit, build bottle,
+# install, linkage checks, and `brew test` for formulae touched in the PR.
+# --skip-dependents: skip `brew uses --eval-all` / dependent formulae (often fails when
+#   unrelated third-party taps on the runner are broken, e.g. missing python@3.8).
+# --skip-online-checks: audit without --online and skip livecheck (fewer flakes / less
+#   strictness for small third-party taps).
 name: test-bot (PR)
 
 on:
@@ -14,4 +20,9 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Run brew test-bot (syntax + build + test)
-        run: brew test-bot --only-formulae --tap="$GITHUB_REPOSITORY"
+        run: >
+          brew test-bot
+          --only-formulae
+          --skip-dependents
+          --skip-online-checks
+          --tap="$GITHUB_REPOSITORY"
