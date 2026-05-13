@@ -1,9 +1,9 @@
 class CogSocEnvSpace < Formula
   desc "Cognitive-social environment space simulator"
   homepage "https://github.com/jcanell4/cog_soc_env_space"
-  url "https://github.com/jcanell4/cog_soc_env_space/archive/refs/tags/v0.0.4.tar.gz"
-  version "0.0.4"
-  sha256 "63b9cfd6599a11ecdf87af6f4ca2ce039bbfdef70b48ce25c439dec8a878668b"
+  url "https://github.com/jcanell4/cog_soc_env_space/archive/refs/tags/v0.1.1.tar.gz"
+  version "0.1.1"
+  sha256 "75f9c96e1a32f85aafb4ff28c9ea3649eda29c0c18f2dc92ef10bcee4456f1a2"
   license "MIT"
 
   depends_on "cmake" => :build
